@@ -17,7 +17,7 @@ Status](https://coveralls.io/repos/github/%3Cusername%3E/%3CPROJECT%20NAME%3E/ba
 
 ## Author
 
-<your name> (<user email>)
+Paul Hassett (<phassett@mmc.org>)
 
 ## Contents
 
