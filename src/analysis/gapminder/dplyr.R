@@ -40,8 +40,8 @@ year_country_gdp <- gapminder %>%
    
 
  
- 
- ggplot code:
+ # 
+# ggplot code:
    ggplot(data = gapminder, aes(x = year, y = lifeExp, color = continent)) +
    geom_line() +
    facet_wrap( ~ country)
