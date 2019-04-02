@@ -50,12 +50,23 @@ names(gap_long)
 gap_temp <- gap_long %>% unite(var_ID,continent,country,sep="_")
 str(gap_temp)
 
+gap_temp <- gap_long %>%
+  unite(ID_var,continent,country,sep="_") %>%
+  unite(var_names,obs_type,year,sep="_")
+str(gap_temp)
 
+gap_wide_new <- gap_long %>%
+  unite(ID_var,continent,country,sep="_") %>%
+  unite(var_names,obs_type,year,sep="_") %>%
+  spread(var_names,obs_values)
+str(gap_wide_new)
 
+# Take this 1 step further and create a gap_ludicrously_wide format data by spreading over countries, 
+# year and the 3 metrics? Hint this new dataframe should only have 5 rows.
 
-
-
-
+gap_ludicrously_wide <- gap_long %>%
+  unite(var_names,obs_type,year,country,sep="_") %>%
+  spread(var_names,obs_values)
 
 
 

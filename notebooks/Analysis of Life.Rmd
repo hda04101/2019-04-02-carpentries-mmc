@@ -1,0 +1,57 @@
+---
+title: "Life Exp"
+author: "Paul Hassett"
+date: "4/2/2019"
+output: html_document
+bibliography: "../outputs/library.bib"
+---
+
+
+## Introduction
+  @Rosling2011
+  
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(here)
+library(tidyverse)
+library(stargazer)
+library(beepr)
+library(pander)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r echo=FALSE, messages=FALSE}
+d <-readr::read_csv(here("data/gapminder/raw/gapminder_data.csv"))
+```
+
+## Data
+```{r}
+pander(summary(d))
+```
+
+The data consist of `r length(unique(d$country))` unique countries tracked from `r range(d$year)[1]` to `r range(d$year)[2]`. Table 1 presents a summary of the variables
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r }
+#d2 <- d %>%
+# group_by(country) %>%
+  
+  
+```
+
+## Results
+
+```{r results= "asis"}
+m <- lm(lifeExp ~ continent + year + pop, data=d)
+
+stargazer(m, type = "HTML")
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
